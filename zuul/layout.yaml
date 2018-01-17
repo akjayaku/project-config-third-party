@@ -71,7 +71,6 @@ pipelines:
     failure:
       gerrit: {}
 
-
 jobs:
   - name: ^.*$
     parameter-function: set_node_options
@@ -132,6 +131,10 @@ projects:
       - gate-ironic-dsvm-tempest-smoke-ironic-cimc-nexus-ocata-centos-7-cimc:
         - gate-ironic-dsvm-tempest-smoke-ironic-cimc-nexus-pike-centos-7-cimc
         - gate-ironic-dsvm-tempest-smoke-ironic-cimc-nexus-newton-centos-7-cimc
+      - gate-networking-cisco-dsvm-tempest-smoke-asr1k-prll-ocata-centos-7-asr-prll
+      - gate-networking-cisco-dsvm-tempest-smoke-asr1k-prll-pike-centos-7-asr-prll
+      - gate-networking-cisco-dsvm-tempest-smoke-asr1k-prll-newton-centos-7-asr-prll
+
 
   - name: openstack/ironic
     check:

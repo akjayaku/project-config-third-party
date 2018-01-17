@@ -62,6 +62,13 @@ labels:
     min-ready: 1
     providers:
       - name: devstack-rocket-man-asr
+  - name: centos-7-asr-prll
+    image: centos-7-asr-prll
+    ready-script: configure_mirror.sh
+    min-ready: 1
+    providers:
+      - name: devstack-rocket-man-asr-prll
+
 
 providers:
   - name: devstack-rocket-man
@@ -182,6 +189,28 @@ providers:
         private-key: /home/nodepool/.ssh/id_rsa
         name-filter: 'Performance'
         config-drive: true
+  - name: devstack-rocket-man-asr-prll
+    username: admin
+    password: secret
+    project-name: demo
+    auth-url: http://192.133.156.19/identity
+    api-timeout: 60
+    boot-timeout: 120
+    max-servers: 3
+    rate: 1
+    # Remove this when glean has support for ipv6 on centos
+    ipv6-preferred: false
+    image-type: qcow2
+    template-hostname: '{image.name}-{timestamp}'
+    images:
+      - name: centos-7-asr-prll
+        min-ram: 8192
+        diskimage: centos-7
+        username: jenkins
+        private-key: /home/nodepool/.ssh/id_rsa
+        name-filter: 'Performance'
+        config-drive: true
+
 
 targets:
   - name: jenkins1
